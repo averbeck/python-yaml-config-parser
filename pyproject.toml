@@ -1,0 +1,48 @@
+[project]
+name = "yaml-config-parser"
+description = "Easy YAML config file parsing library"
+authors = [
+    {name = "Marc Averbeck", email="ghostcode1337@gmx.com"},
+]
+license = {file = "LICENSE.md"}
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["config", "parser", "yaml"]
+classifiers = [
+    "Topic :: Software Development"
+]
+
+dynamic = ["version"]
+
+dependencies = [
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = [
+    "flake8",
+    "nose2[coverage-plugin]",
+    "coverage",
+    "black",
+]
+
+[build-system]
+requires = [
+    "setuptools >= 65.6.3",
+    "wheel"
+]
+
+[tool.setuptools]
+packages = ["yaml_config_parser"]
+
+[tool.black]
+line-length = 120
+target_version = ['py311']
+
+[tool.pylint]
+max-line-length = 120
+disable = [
+    "C0114",
+    "C0115",
+    "C0116",
+    ]

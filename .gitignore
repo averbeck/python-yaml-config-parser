@@ -1,0 +1,41 @@
+# Ignore python build cache
+*/__pycache__/*
+*/__pycache__
+*.pyc
+
+# Ignore temporary files
+*.tmp
+
+# Ignore local project settings
+/.project
+/.pydevproject
+/.settings
+/.idea
+/.vscode
+
+# Ignore setting files but not for tests
+*.conf
+!tests/**/*.conf
+*.ini
+!tests/**/*.ini
+
+# Ignore cache folder
+/.cache
+
+# Ignore virtual environments
+/venv
+/.venv
+
+# Ignore binaries and build folders
+build
+dist
+
+# Ignore python eggs and wheels
+*.egg-info
+.eggs
+
+# Ignore code reports
+reports
+
+# Ignore local reports
+*.coverage
