@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
-
 from typing import Any
 
 import yaml
@@ -34,7 +33,7 @@ class YamlConfig(ExtendedConfigInterface):
         self._needs_rewrite: bool = False
         self.content = {}
 
-        self.parent: "YamlConfig" | None = parent
+        self.parent: "YamlConfig | None" = parent
         if not parent:
             self.load_config(allow_empty)
 
@@ -63,12 +62,13 @@ class YamlConfig(ExtendedConfigInterface):
         except FileNotFoundError as err:
             if not allow_empty:
                 raise err
-
-        if not content and allow_empty:
             content = {}
 
         if not isinstance(content, dict):
-            raise TypeError("Configuration file was empty")
+            if not allow_empty:
+                raise TypeError("Configuration file was empty")
+            else:
+                content = {}
 
         for key, value in content.items():
             if isinstance(value, dict):
