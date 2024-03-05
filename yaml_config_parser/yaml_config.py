@@ -88,6 +88,7 @@ class YamlConfig(ExtendedConfigInterface):
         if config_file is None:
             config_file = self.config_file
 
+        config_file.parent.mkdir(parents=True, exist_ok=True)
         with config_file.open("w", encoding="utf-8") as file_pointer:
             yaml.representer.SafeRepresenter.add_representer(YamlConfig, yaml_config_serializer)
             yaml.safe_dump(self, file_pointer, indent=4)
