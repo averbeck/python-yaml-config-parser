@@ -118,7 +118,7 @@ class YamlConfig(ExtendedConfigInterface):
         if section not in self.content:
             config_section = YamlConfig(parent=self)
         else:
-            config_section = self.content[section]
+            config_section = self.content[section] if self.content[section] else YamlConfig(parent=self.content)
 
         content = {} if not content else content
 
